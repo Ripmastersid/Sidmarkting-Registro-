@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidmarkting | Registro de Marcas no INPI</title>
+    <link rel="icon" href="favicon-mark.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        body{background:#0A0A0F;color:#EAEAEA;font-family:'Inter',sans-serif;line-height:1.6;overflow-x:hidden}
+        h1,h2,h3{font-family:'Montserrat',sans-serif;font-weight:700;line-height:1.2}
+        a{text-decoration:none;color:inherit}
+        img{max-width:100%;display:block}
+        .container{max-width:1200px;margin:0 auto;padding:0 20px}
+        
+        /* RGB Border Animation */
+        @keyframes rgb-border{
+            0%{border-image:linear-gradient(0deg,#00D1FF,#FF3B30,#FFD60A) 1}
+            25%{border-image:linear-gradient(90deg,#FF3B30,#FFD60A,#00D1FF) 1}
+            50%{border-image:linear-gradient(180deg,#FFD60A,#00D1FF,#FF3B30) 1}
+            75%{border-image:linear-gradient(270deg,#00D1FF,#FF3B30,#FFD60A) 1}
+            100%{border-image:linear-gradient(360deg,#FF3B30,#FFD60A,#00D1FF) 1}
+        }
+        .rgb-card{
+            background:rgba(44,44,58,0.4);
+            border:1px solid;
+            border-image:linear-gradient(90deg,#00D1FF,#FF3B30,#FFD60A) 1;
+            animation:rgb-border 4s linear infinite;
+            backdrop-filter:blur(12px);
+            border-radius:12px;
+            padding:24px;
+            transition:all 0.3s ease
+        }
+        .rgb-card:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(0,209,255,0.2)}
+        
+        /* Header */
+        header{
+            position:fixed;top:0;width:100%;z-index:1000;
+            background:rgba(10,10,15,0.8);backdrop-filter:blur(16px);
+            border-bottom:1px solid rgba(255,214,10,0.1)
+        }
+        .nav{display:flex;justify-content:space-between;align-items:center;padding:16px 0}
+        .logo{display:flex;align-items:center;gap:12px}
+        .logo img{height:40px;width:auto}
+        .logo span{font-family:'Montserrat';font-weight:800;color:#FFD60A;font-size:20px}
+        .nav-links{display:flex;gap:32px;align-items:center}
+        .nav-links a{font-weight:500;transition:color 0.3s ease}
+        .nav-links a:hover{color:#00D1FF}
+        .btn{
+            background:#FFD60A;color:#0A0A0F;padding:12px 24px;
+            border-radius:8px;font-weight:600;transition:all 0.3s ease;
+            border:none;cursor:pointer;display:inline-block
+        }
+        .btn:hover{background:#00D1FF;transform:scale(1.05)}
+        .menu-toggle{display:none;font-size:24px;cursor:pointer}
+        
+        /* Hero Parallax */
+        .hero{
+            min-height:100vh;display:flex;align-items:center;position:relative;
+            background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><radialGradient id="g"><stop offset="0%" stop-color="%232D1B4E"/><stop offset="100%" stop-color="%230A0A0F"/></radialGradient></defs><rect width="1200" height="800" fill="url(%23g)"/></svg>');
+            background-attachment:fixed;background-size:cover;padding-top:80px
+        }
+        .hero-content{display:grid;grid-template-columns:1.2fr 1fr;gap:60px;align-items:center}
+        .hero h1{font-size:52px;margin-bottom:20px}
+        .hero h1 strong{color:#FFD60A}
+        .hero h1 span{color:#00D1FF}
+        .hero p{font-size:18px;color:#B8B8C7;margin-bottom:32px}
+        .stats{display:flex;gap:40px;margin-top:40px}
+        .stats div strong{color:#FFD60A;font-size:32px;font-family:'Montserrat';display:block}
+        .stats div span{font-size:14px;color:#8A8A9A}
+        
+        /* Sections */
+        section{padding:100px 0}
+        .section-purple{background:#2D1B4E}
+        .section-title{text-align:center;margin-bottom:60px}
+        .section-title h2{font-size:40px;margin-bottom:16px}
+        .section-title h2 span{color:#FFD60A}
+        .section-title p{color:#B8B8C7;font-size:18px}
+        .grid{display:grid;gap:24px}
+        .grid-3{grid-template-columns:repeat(3,1fr)}
+        .grid-5{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+        
+        /* Problem */
+        .alert-text{color:#FF3B30;font-weight:600}
+        
+        /* Services */
+        .service-icon{
+            width:48px;height:48px;background:#00D1FF;border-radius:10px;
+            display:flex;align-items:center;justify-content:center;
+            font-size:24px;margin-bottom:16px;color:#0A0A0F
+        }
+        
+        /* Process */
+        .process-step{display:flex;gap:20px;margin-bottom:32px}
+        .step-num{
+            min-width:48px;height:48px;background:#FFD60A;color:#0A0A0F;
+            border-radius:50%;display:flex;align-items:center;justify-content:center;
+            font-family:'Montserrat';font-weight:800;font-size:20px
+        }
+        
+        /* Pricing */
+        .price{font-size:40px;font-family:'Montserrat';font-weight:800;color:#FFD60A;margin:16px 0}
+        .price small{font-size:16px;color:#8A8A9A;font-weight:400}
+        .plan-feature{display:flex;align-items:center;gap:12px;margin:12px 0}
+        .plan-feature::before{content:"✓";color:#00D1FF;font-weight:700}
+        .plan-popular{border:2px solid #FFD60A;position:relative}
+        .plan-popular::before{
+            content:"MAIS VENDIDO";position:absolute;top:-12px;left:50%;
+            transform:translateX(-50%);background:#FFD60A;color:#0A0A0F;
+            padding:4px 16px;border-radius:20px;font-size:12px;font-weight:700
+        }
+        
+        /* FAQ */
+        .faq-item{margin-bottom:16px}
+        .faq-q{
+            background:rgba(44,44,58,0.6);padding:20px;border-radius:8px;
+            cursor:pointer;display:flex;justify-content:space-between;align-items:center;
+            font-weight:600;transition:all 0.3s ease
+        }
+        .faq-q:hover{background:rgba(44,44,58,0.8)}
+        .faq-a{display:none;padding:20px;color:#B8B8C7}
+        .faq-a.active{display:block}
+        
+        /* CTA Final Parallax */
+        .cta-final{
+            background:linear-gradient(rgba(45,27,78,0.9),rgba(10,10,15,0.95)),url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect width="1200" height="600" fill="%230A0A0F"/><circle cx="200" cy="100" r="80" fill="%2300D1FF" opacity="0.1"/><circle cx="1000" cy="500" r="120" fill="%23FFD60A" opacity="0.1"/></svg>');
+            background-attachment:fixed;background-size:cover;text-align:center;padding:120px 20px
+        }
+        .cta-final h2{font-size:48px;margin-bottom:24px}
+        
+        /* WhatsApp Float */
+        .whatsapp-float{
+            position:fixed;bottom:30px;right:30px;width:60px;height:60px;
+            background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;
+            box-shadow:0 4px 20px rgba(37,211,102,0.4);z-index:9999;cursor:pointer;
+            border:2px solid;animation:rgb-border 3s linear infinite;transition:all 0.3s ease
+        }
+        .whatsapp-float:hover{transform:scale(1.1)}
+        @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(37,211,102,0.7)}50%{box-shadow:0 0 0 15px rgba(37,211,102,0)}}
+        .whatsapp-float{animation:rgb-border 3s linear infinite,pulse 2s infinite}
+        
+        /* Footer */
+        footer{background:#0A0A0F;border-top:1px solid rgba(255,214,10,0.1);padding:40px 0;text-align:center}
+        footer p{color:#8A8A9A;font-size:14px;margin:8px 0}
+        
+        /* Mobile */
+        @media(max-width:768px){
+            .nav-links{display:none}
+            .menu-toggle{display:block}
+            .hero-content{grid-template-columns:1fr;text-align:center}
+            .hero h1{font-size:36px}
+            .grid-3,.grid-5{grid-template-columns:1fr}
+            .stats{justify-content:center}
+            .cta-final h2{font-size:32px}
+            .whatsapp-float{bottom:20px;right:20px;width:56px;height:56px}
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="nav">
+                <div class="logo">
+                    <img src="logo.png" alt="Sidmarkting">
+                    <span>Sidmarkting</span>
+                </div>
+                <div class="nav-links">
+                    <a href="#inicio">Início</a>
+                    <a href="#servicos">Serviços</a>
+                    <a href="#processo">Processo</a>
+                    <a href="#precos">Preços</a>
+                    <a href="#faq">FAQ</a>
+                    <a href="https://wa.me/5521966053200?text=Ol%C3%A1%20Sidmarkting%2C%20quero%20registrar%20minha%20marca%20no%20INPI" class="btn">Falar no WhatsApp</a>
+                </div>
+                <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="inicio">
+        <div class="container">
+            <div class="hero-content">
+                <div>
+                    <h1>Registre sua <strong>marca no INPI</strong> com <span>segurança jurídica</span></h1>
+                    <p>Somos uma procuradoria especializada em registro de marcas. Cuidamos de todo o processo: busca de anterioridade, protocolo, acompanhamento e defesa. <span class="alert-text">Não corra risco de perder sua marca.</span></p>
+                    <a href="https://wa.me/5521966053200?text=Ol%C3%A1%20Sidmarkting%2C%20quero%20registrar%20minha%20marca%20no%20INPI" class="btn">Proteger Minha Marca Agora</a>
+                    <div class="stats">
+                        <div><strong>+1.200</strong><span>Marcas protocoladas</span></div>
+                        <div><strong>24h</strong><span>Para protocolo</span></div>
+                        <div><strong>12 meses</strong><span>Monitoramento</span></div>
+                    </div>
+                </div>
+                <div class="rgb-card">
+                    <h3 style="color:#00D1FF;margin-bottom:16px">Procuração Simplificada</h3>
+                    <p style="margin-bottom:20px;color:#B8B8C7">Você assina 1 documento digital e viramos seu procurador no INPI. Cuidamos de toda burocracia.</p>
+                    <div class="plan-feature">Assinatura 100% digital em 5 minutos</div>
+                    <div class="plan-feature">Sem cartório, sem burocracia</div>
+                    <div class="plan-feature">Válida em todo território nacional</div>
+                    <div class="plan-feature">Protocolo no INPI em até 24h úteis</div>
+                    <a href="https://wa.me/5521966053200?text=Ol%C3%A1%20Sidmarkting%2C%20quero%20assinar%20a%20procura%C3%A7%C3%A3o%20digital" class="btn" style="width:100%;text-align:center;margin-top:20px">Assinar Procuração Digital</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="section-title">
+                <h2>3 riscos de <span>não registrar</span> sua marca hoje</h2>
+                <p>O INPI funciona por ordem de pedido. Quem protocola primeiro, tem preferência.</p>
+            </div>
+            <div class="grid grid-3">
+                <div class="rgb-card">
+                    <h3 style="color:#FF3B30;margin-bottom:12px">1. Cópia por concorrentes</h3>
+                    <p>Sem registro, qualquer pessoa pode copiar seu nome e te impedir de usar. Você perde anos de branding.</p>
+                </div>
+                <div class="rgb-card">
+                    <h3 style="color:#FF3B30;margin-bottom:12px">2. Processos judiciais</h3>
+                    <p>Se alguém registrar primeiro, você pode ser processado e obrigado a trocar toda sua identidade visual.</p>
+                </div>
+                <div class="rgb-card">
+                    <h3 style="color:#FF3B30;margin-bottom:12px">3. Perder @ e domínio</h3>
+                    <p>Com o certificado do INPI você garante direito de uso do nome no Instagram, domínio .com.br e marketplaces.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-purple" id="servicos">
+        <div class="container">
+            <div class="section-title">
+                <h2>Serviços <span>INPI</span> que executamos</h2>
+                <p>Atuamos como procurador autorizado em todas as áreas da Propriedade Industrial</p>
+            </div>
+            <div class="grid grid-5">
+                <div class="rgb-card">
+                    <div class="service-icon">®</div>
+                    <h3>Marca</h3>
+                    <p style="color:#B8B8C7;font-size:14px">Busca, pedido, acompanhamento, oposições e certificado de registro.</p>
+                </div>
+                <div class="rgb-card">
+                    <div class="service-icon">⚙️</div>
+                    <h3>Patente</h3>
+                    <p style="color:#B8B8C7;font-size:14px">Redação técnica e depósito de inventos e modelos de utilidade.</p>
+                </div>
+                <div class="rgb-card">
+                    <div class="service-icon">🎨</div>
+                    <h3>Desenho Industrial</h3>
+                    <p style="color:#B8B8C7;font-size:14px">Proteção do design visual e ornamental do seu produto.</p>
+                </div>
+                <div class="rgb-card">
+                    <div class="service-icon">💻</div>
+                    <h3>Software</h3>
+                    <p style="color:#B8B8C7;font-size:14px">Registro de programa de computador e código-fonte no INPI.</p>
+                </div>
+                <div class="rgb-card">
+                    <div class="service-icon">🤝</div>
+                    <h3>Tecnologia</h3>
+                    <p style="color:#B8B8C7;font-size:14px">Contratos de transferência e licenciamento de tecnologia.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="processo">
+        <div class="container">
+            <div class="section-title">
+                <h2>Processo em <span>4 passos</span> simples</h2>
+                <p>Você foca no seu negócio. A gente cuida do INPI.</p>
+            </div>
+            <div style="max-width:800px;margin:0 auto">
+                <div class="process-step">
+                    <div class="step-num">1</div>
+                    <div>
+                        <h3>Diagnóstico Gratuito</h3>
+                        <p style="color:#B8B8C7">Análise de viabilidade da sua marca em 30min via WhatsApp. Sem compromisso.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">2</div>
+                    <div>
+                        <h3>Busca de Anterioridade</h3>
+                        <p style="color:#B8B8C7">Pesquisa completa na base do INPI para garantir que sua marca está livre para registro.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">3</div>
+                    <div>
+                        <h3>Protocolo no INPI</h3>
+                        <p style="color:#B8B8C7">Preparamos e protocolamos seu pedido em até 24h úteis após aprovação.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">4</div>
+                    <div>
+                        <h3>Acompanhamento até Deferimento</h3>
+                        <p style="color:#B8B8C7">Monitoramos todas as RPI e te defendemos em caso de oposição. Você recebe o certificado.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-purple" id="precos">
+        <div class="container">
+            <div class="section-title">
+                <h2>Planos e <span>Investimento</span></h2>
+                <p>Valores transparentes. Taxas INPI pagas direto ao governo.</p>
+            </div>
+            <div class="grid grid-3">
+                <div class="rgb-card">
+                    <h3>Start</h3>
+                    <div class="price">R$ 597 <small>+ Taxas INPI ~R$ 355</small></div>
+                    <div class="plan-feature">Busca de anterioridade completa</div>
+                    <div class="plan-feature">Pedido de registro 1 classe</div>
+                    <div class="plan-feature">Protocolo em 24h úteis</div>
+                    <div class="plan-feature">Acompanhamento básico</div>
+                    <a href="https://wa.me/5521966053200?text=Ol%C3%A1%20Sidmarkting%2C%20quero%20o%20Plano%20Start" class="btn" style="width:100%;margin-top:20px;text-align:center">Contratar Start</a>
+                </div>
+                <div class="rgb-card plan-popular">
+                    <h3>Pro</h3>
+                    <div class="price">R$ 1.297 <small>+ Taxas INPI</small></div>
+                    <div class="plan-feature">Tudo do Start +</div>
+                    <div class="plan-feature">Monitoramento 12 meses</div>
+                    <div class="plan-feature">Defesa de 1 oposição inclusa</div>
+                    <div class="plan-feature">Relatórios mensais</div>
+                    <div class="plan-feature">Suporte prioritário</div>
+                    <a href="https://wa.me/5521966053200?text=Ol%C3%A1%20Sidmarkting%2C%20quero%20o%20Plano%20Pro" class="btn" style="width:100%;margin-top:20px;text-align:center">Contratar Pro</a>
+                </div>
+                <div class="rgb-card">
+                    <h3>Empresa</h3>
+                    <div class="price">R$ 2.497 <small>+ Taxas INPI</small></div>
+                    <div class="plan-feature">Tudo do Pro +</div>
+                    <div class="plan-feature">Até 3 classes inclusas</div>
+                    <div class="plan-feature">Registro de software</div>
+                    <div class="plan-feature">Consultoria de branding</div>
+                    <div class="plan-feature">Contrato de licenciamento</div>
+                    <a href="https://wa.me/5521966053200?text=Ol%C3%A1%20Sidmarkting%2C%20quero%20o%20Plano%20Empresa" class="btn" style="width:100%;margin-top:20px;text-align:center">Contratar Empresa</a>
+                </div>
+            </div>
+            <p style="text-align:center;margin-top:32px;color:#8A8A9A;font-size:14px">* Taxas INPI são pagas diretamente ao governo. Valores de referência 2026.</p>
+        </div>
+    </section>
+
+    <section id="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>Dúvidas <span>Frequentes</span></h2>
+            </div>
+            <div style="max-width:800px;margin:0 auto">
+                <div class="faq-item rgb-card">
+                    <div class="faq-q" onclick="toggleFaq(this)">Quanto tempo demora o registro? <span>+</span></div>
+                    <div class="faq-a">O INPI leva em média 8 a 14 meses para deferir. Porém, após o protocolo você já tem <strong>expectativa de direito</strong> e pode usar o ®. Acompanhamos todas as RPI.</div>
+                </div>
+                <div class="faq-item rgb-card">
+                    <div class="faq-q" onclick="toggleFaq(this)">Preciso ter CNPJ? <span>+</span></div>
+                    <div class="faq-a">Não. Pessoa física pode registrar marca com CPF. Ideal para validar negócio antes de abrir empresa.</div>
+                </div>
+                <div class="faq-item rgb-card">
+                    <div class="faq-q" onclick="toggleFaq(this)">E se alguém copiar minha marca? <span>+</span></div>
+                    <div class="faq-a">Com o certificado você pode notificar extrajudicialmente, tirar do ar no Instagram/Mercado Livre e processar por danos. <span class="alert-text">Sem registro, você não tem esse poder.</span></div>
+                </div>
+                <div class="faq-item rgb-card">
+                    <div class="faq-q" onclick="toggleFaq(this)">Taxas do INPI estão inclusas? <span>+</span></div>
+                    <div class="faq-a">Não. As taxas são pagas direto ao governo via GRU. Nós cuidamos da emissão e te orientamos no pagamento. Transparência total.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-final">
+        <div class="container">
+            <h2>Sua marca vale mais que seu <span style="color:#FFD60A">Instagram</span></h2>
+            <p style="font-size:18px;color:#B8B8C7;margin-bottom:32px;max-width:600px;margin-left:auto;margin-right:auto">Não deixe anos de trabalho desprotegidos. Garanta exclusividade do seu nome em todo Brasil.</p>
+            <a href="https://wa.me/5521966053200?text=Ol%C3%A1%20Sidmarkting%2C%20quero%20registrar%20minha%20marca%20no%20INPI" class="btn" style="font-size:18px;padding:16px 40px">Falar com Especialista no WhatsApp</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p><strong style="color:#FFD60A">Sidmarkting Marcas & Patentes</strong></p>
+            <p>Procurador Autorizado INPI | CNPJ: 00.000.000/0001-00</p>
+            <p>São Paulo/SP | WhatsApp: (21) 96605-3200</p>
+            <p style="margin-top:20px;font-size:12px">© 2026 Sidmarkting. Todos os direitos reservados. | <a href="https://www.gov.br/inpi" target="_blank" style="color:#00D1FF">Site Oficial INPI</a> | LGPD</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5521966053200?text=Ol%C3%A1%20Sidmarkting%2C%20quero%20registrar%20minha%20marca%20no%20INPI" class="whatsapp-float" target="_blank">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="white"><path d="M16.003 2.667c-7.363 0-13.336 5.973-13.336 13.336 0 2.35.617 4.64 1.792 6.661L2.667 29.333l6.82-1.758c1.93 1.056 4.12 1.613 6.516 1.613h.005c7.361 0 13.335-5.974 13.335-13.337 0-3.562-1.387-6.912-3.906-9.431-2.519-2.519-5.869-3.906-9.43-3.906zm7.687 19.467c-.322.902-1.888 1.771-2.59 1.885-.682.11-1.532.156-2.472-.156-.571-.19-1.305-.422-2.248-.826-3.954-1.71-6.527-5.907-6.725-6.181-.198-.275-1.605-2.133-1.605-4.07 0-1.937 1.016-2.893 1.377-3.289.361-.396.787-.495 1.05-.495.262 0 .525.002.755.014.242.012.57-.092.893.682.322.774 1.096 2.674 1.193 2.87.096.195.161.423.032.692-.128.27-.193.436-.385.671-.193.235-.405.526-.578.707-.192.192-.392.4-.168.785.224.386.997 1.644 2.14 2.662 1.47 1.31 2.71 1.716 3.095 1.91.386.196.611.163.836-.098.225-.26.964-1.126 1.222-1.513.258-.386.516-.322.871-.193.356.128 2.255 1.064 2.642 1.258.387.194.645.291.741.452.096.16.096.93-.226 1.832z"/></svg>
+    </a>
+
+    <script>
+        function toggleMenu(){
+            const links=document.querySelector('.nav-links');
+            links.style.display=links.style.display==='flex'?'none':'flex';
+        }
+        function toggleFaq(el){
+            const answer=el.nextElementSibling;
+            const isActive=answer.classList.contains('active');
+            document.querySelectorAll('.faq-a').forEach(a=>a.classList.remove('active'));
+            document.querySelectorAll('.faq-q span').forEach(s=>s.textContent='+');
+            if(!isActive){
+                answer.classList.add('active');
+                el.querySelector('span').textContent='−';
+            }
+        }
+        // Fade in on scroll
+        const observer=new IntersectionObserver((entries)=>{
+            entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)'}})
+        },{threshold:0.1});
+        document.querySelectorAll('.rgb-card').forEach(el=>{
+            el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+  </html>
