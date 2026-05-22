@@ -82,8 +82,8 @@
         .faq-item{margin-bottom:16px}
         .faq-q{background:rgba(44,44,58,0.6);padding:20px;border-radius:8px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-weight:600;transition:all 0.3s ease}
         .faq-q:hover{background:rgba(44,44,58,0.8)}
-        .faq-a{display:none;padding:20px;color:#B8B8C7}
-        .faq-a.active{display:block}
+        .faq-a{max-height:0;overflow:hidden;padding:0 20px;color:#B8B8C7;transition:max-height 0.3s ease,padding 0.3s ease}
+        .faq-a.active{max-height:300px;padding:20px}
         
         .cta-final{background:linear-gradient(rgba(45,27,78,0.9),rgba(10,10,15,0.95));background-attachment:fixed;background-size:cover;text-align:center;padding:120px 20px}
         .cta-final h2{font-size:48px;margin-bottom:24px}
@@ -111,24 +111,16 @@
         .whatsapp-float:hover{transform:scale(1.1)}
         @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(37,211,102,0.7)}50%{box-shadow:0 0 0 15px rgba(37,211,102,0)}}
         
-        footer{background:#0A0A0F;border-top:1px solid rgba(255,214,10,0.1);padding:40px 0;text-align:center}
-        footer p{color:#8A8A9A;font-size:14px;margin:8px 0}
-        footer a{color:#00D1FF;cursor:pointer}
-        footer a:hover{color:#FFD60A}
-        
-        /* Modal Política de Privacidade */
-        .modal{display:none;position:fixed;z-index:10000;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.8);backdrop-filter:blur(8px);overflow-y:auto}
-        .modal-content{background:#1A1A24;margin:5% auto;padding:40px;border-radius:16px;max-width:800px;border:1px solid;animation:rgb-border 4s linear infinite}
-        .modal-content h2{color:#FFD60A;margin-bottom:20px}
-        .modal-content h3{color:#00D1FF;margin:24px 0 12px}
-        .modal-content p{color:#B8B8C7;margin-bottom:16px;line-height:1.8}
-        .modal-content ul{color:#B8B8C7;margin-left:20px;margin-bottom:16px}
-        .modal-content li{margin-bottom:8px}
-        .close-modal{float:right;font-size:32px;font-weight:700;color:#8A8A9A;cursor:pointer;transition:color 0.3s}
-        .close-modal:hover{color:#FF3B30}
+        footer{background:#0A0A0F;border-top:1px solid rgba(255,214,10,0.1);padding:60px 0 30px}
+        .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:40px}
+        .footer-col h4{color:#FFD60A;font-family:'Montserrat';margin-bottom:16px;font-size:18px}
+        .footer-col p,.footer-col a{display:block;color:#B8B8C7;font-size:14px;margin:8px 0;transition:color 0.3s ease}
+        .footer-col a:hover{color:#00D1FF}
+        .footer-bottom{text-align:center;padding-top:30px;border-top:1px solid rgba(255,214,10,0.1);color:#8A8A9A;font-size:13px}
         
         @media(max-width:768px){
-            .nav-links{display:none}
+            .nav-links{display:none;position:absolute;top:72px;left:0;width:100%;background:#0A0A0F;flex-direction:column;padding:20px;gap:16px;border-bottom:1px solid rgba(255,214,10,0.1)}
+            .nav-links.active{display:flex}
             .menu-toggle{display:block}
             .hero-content{grid-template-columns:1fr;text-align:center}
             .hero h1{font-size:36px}
@@ -136,7 +128,7 @@
             .stats{justify-content:center}
             .cta-final h2{font-size:32px}
             .whatsapp-float{bottom:20px;right:20px;width:56px;height:56px}
-            .modal-content{margin:10% 20px;padding:24px}
+            .footer-grid{grid-template-columns:1fr;text-align:center}
         }
     </style>
 </head>
@@ -148,12 +140,13 @@
                     <img src="logo.png" alt="Sidmarkting">
                     <span>Sidmarkting</span>
                 </div>
-                <div class="nav-links">
+                <div class="nav-links" id="navLinks">
                     <a href="#inicio">Início</a>
                     <a href="#servicos">Serviços</a>
                     <a href="#processo">Processo</a>
                     <a href="#precos">Preços</a>
                     <a href="#formulario">Formulário</a>
+                    <a href="#faq">FAQ</a>
                     <a href="https://wa.me/5521966053200?text=Ol%C3%A1%20Sidmarkting%2C%20quero%20registrar%20minha%20marca%20no%20INPI" class="btn">Falar no WhatsApp</a>
                 </div>
                 <div class="menu-toggle" onclick="toggleMenu()">☰</div>
@@ -194,12 +187,12 @@
                     <img src="logo.png" alt="Sidmarkting">
                     <div>
                         <div class="form-title">SIDMARKTING</div>
-                        <div class="form-subtitle">REGISTRO DE MARCA NO INPI</div>
+                        <div class="form-subtitle">REGISTRO DE MARCA ESTILONOSPES</div>
                     </div>
                 </div>
                 
                 <h2 style="color:#FFD60A;font-size:28px;margin:24px 0">Formulário de Dados - Procuração INPI</h2>
-                <p style="color:#B8B8C7;margin-bottom:20px">Preencha os campos abaixo com dados idênticos à sua documentação. Ao enviar, os dados irão direto para o WhatsApp do Sidnei.</p>
+                <p style="color:#B8B8C7;margin-bottom:20px">Preencha os campos abaixo. Ao enviar, os dados irão direto para o WhatsApp do Sidnei.</p>
                 
                 <div class="form-alert">
                     <span style="font-size:24px">⚠️</span>
@@ -211,22 +204,18 @@
                         <label>Nome Completo <span>*</span></label>
                         <input type="text" id="nome" placeholder="Igual ao RG/CPF" required>
                     </div>
-                    
                     <div class="form-group">
                         <label>CPF <span>*</span></label>
                         <input type="text" id="cpf" placeholder="000.000.000-00" maxlength="14" required>
                     </div>
-                    
                     <div class="form-group">
                         <label>RG <span>*</span></label>
                         <input type="text" id="rg" placeholder="00.000.000-0" required>
                     </div>
-                    
                     <div class="form-group">
                         <label>Órgão Emissor/UF <span>*</span></label>
                         <input type="text" id="orgao" placeholder="SSP/SP" required>
                     </div>
-                    
                     <div class="form-group">
                         <label>Estado Civil <span>*</span></label>
                         <select id="estadoCivil" required>
@@ -238,42 +227,34 @@
                             <option>União Estável</option>
                         </select>
                     </div>
-                    
                     <div class="form-group">
                         <label>Profissão <span>*</span></label>
-                        <input type="text" id="profissao" placeholder="Digite sua profissão" required>
+                        <input type="text" id="profissao" placeholder="Ex: Empresário, Artesã" required>
                     </div>
-                    
                     <div class="form-group">
                         <label>CEP <span>*</span></label>
                         <input type="text" id="cep" placeholder="00000-000" maxlength="9" required>
                     </div>
-                    
                     <div class="form-group">
                         <label>Logradouro <span>*</span></label>
                         <input type="text" id="logradouro" placeholder="Rua, Avenida" required>
                     </div>
-                    
                     <div class="form-group">
                         <label>Número <span>*</span></label>
                         <input type="text" id="numero" placeholder="123" required>
                     </div>
-                    
                     <div class="form-group">
                         <label>Complemento</label>
                         <input type="text" id="complemento" placeholder="Apto, bloco, etc">
                     </div>
-                    
                     <div class="form-group">
                         <label>Bairro <span>*</span></label>
                         <input type="text" id="bairro" required>
                     </div>
-                    
                     <div class="form-group">
                         <label>Cidade <span>*</span></label>
                         <input type="text" id="cidade" required>
                     </div>
-                    
                     <div class="form-group">
                         <label>Estado <span>*</span></label>
                         <select id="estado" required>
@@ -286,24 +267,20 @@
                             <option>SE</option><option>TO</option>
                         </select>
                     </div>
-                    
                     <div class="form-group">
                         <label>E-mail <span>*</span></label>
                         <input type="email" id="email" placeholder="seu@email.com" required>
                     </div>
-                    
                     <div class="form-group">
                         <label>WhatsApp <span>*</span></label>
                         <input type="text" id="whatsapp" placeholder="(21) 99999-9999" maxlength="15" required>
                     </div>
-                    
                     <div class="checkbox-group">
                         <input type="checkbox" id="autorizo" required>
-                        <label for="autorizo">Autorizo Sidmarkting a utilizar estes dados exclusivamente para registro da marca no INPI, conforme LGPD.</label>
+                        <label for="autorizo">Autorizo Sidmarkting a utilizar estes dados exclusivamente para registro da marca ESTILONOSPES no INPI, conforme LGPD.</label>
                     </div>
-                    
                     <button type="submit" class="btn-whatsapp">
-                        <svg width="24" height="24" viewBox="0 0 32 32" fill="white"><path d="M16.003 2.667c-7.363 0-13.336 5.973-13.336 13.336 0 2.35.617 4.64 1.792 6.661L2.667 29.333l6.82-1.758c1.93 1.056 4.12 1.613 6.516 1.613h.005c7.361 0 13.335-5.974 13.335-13.337 0-3.562-1.387-6.912-3.906-9.431-2.519-5.869-3.906-9.43-3.906zm7.687 19.467c-.322.902-1.888 1.771-2.59 1.885-.682.11-1.532.156-2.472-.156-.571-.19-1.305-.422-2.248-.826-3.954-1.71-6.527-5.907-6.725-6.181-.198-.275-1.605-2.133-1.605-4.07 0-1.937 1.016-2.893 1.377-3.289.361-.396.787-.495 1.05-.495.262 0 .525.002.755.014.242.012.57-.092.893.682.322.774 1.096 2.674 1.193 2.87.096.195.161.423.032.692-.128.27-.193.436-.385.671-.193.235-.405.526-.578.707-.192.192-.392.4-.168.785.224.386.997 1.644 2.14 2.662 1.47 1.31 2.71 1.716 3.095 1.91.386.196.611.163.836-.098.225-.26.964-1.126 1.222-1.513.258-.386.516-.322.871-.193.356.128 2.255 1.064 2.642 1.258.387.194.645.291.741.452.096.16.096.93-.226 1.832z"/></svg>
+                        <svg width="24" height="24" viewBox="0 0 32 32" fill="white"><path d="M16.003 2.667c-7.363 0-13.336 5.973-13.336 13.336 0 2.35.617 4.64 1.792 6.661L2.667 29.333l6.82-1.758c1.93 1.056 4.12 1.613 6.516 1.613h.005c7.361 0 13.335-5.974 13.335-13.337 0-3.562-1.387-6.912-3.906-9.431-2.519-2.519-5.869-3.906-9.43-3.906zm7.687 19.467c-.322.902-1.888 1.771-2.59 1.885-.682.11-1.532.156-2.472-.156-.571-.19-1.305-.422-2.248-.826-3.954-1.71-6.527-5.907-6.725-6.181-.198-.275-1.605-2.133-1.605-4.07 0-1.937 1.016-2.893 1.377-3.289.361-.396.787-.495 1.05-.495.262 0 .525.002.755.014.242.012.57-.092.893.682.322.774 1.096 2.674 1.193 2.87.096.195.161.423.032.692-.128.27-.193.436-.385.671-.193.235-.405.526-.578.707-.192.192-.392.4-.168.785.224.386.997 1.644 2.14 2.662 1.47 1.31 2.71 1.716 3.095 1.91.386.196.611.163.836-.098.225-.26.964-1.126 1.222-1.513.258-.386.516-.322.871-.193.356.128 2.255 1.064 2.642 1.258.387.194.645.291.741.452.096.16.096.93-.226 1.832z"/></svg>
                         Enviar dados via WhatsApp
                     </button>
                 </form>
@@ -457,4 +434,20 @@
         <div class="container">
             <h2>Sua marca vale mais que seu <span style="color:#FFD60A">Instagram</span></h2>
             <p style="font-size:18px;color:#B8B8C7;margin-bottom:32px;max-width:600px;margin-left:auto;margin-right:auto">Não deixe anos de trabalho desprotegidos. Garanta exclusividade do seu nome em todo Brasil.</p>
-            <a href="#formulario" class="btn" style="font-size:18px;padding:16px 40px">
+            <a href="#formulario" class="btn" style="font-size:18px;padding:16px 40px">Preencher Procuração Agora</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+                        <img src="logo.png" alt="Sidmarkting" style="height:40px">
+                        <h4 style="margin:0">Sidmarkting</h4>
+                    </div>
+                    <p>Procuradoria especializada em registro de marcas, patentes e propriedade industrial no INPI.</p>
+                    <p style="margin-top:16px"><strong style="color:#FFD60A">Procurador Autorizado INPI</strong></p>
+                </div>
+                <div class="footer-col">
+                    <h4>Contato
