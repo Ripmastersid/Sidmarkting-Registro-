@@ -80,7 +80,7 @@
         .plan-popular{border:2px solid #FFD60A;position:relative}
         .plan-popular::before{content:"MAIS VENDIDO";position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#FFD60A;color:#0A0A0F;padding:4px 16px;border-radius:20px;font-size:12px;font-weight:700}
         
-        /* FAQ CORRIGIDO */
+        /* FAQ FUNCIONANDO */
         .faq-item{margin-bottom:16px;cursor:pointer}
         .faq-q{
             background:rgba(44,44,58,0.6);padding:20px;border-radius:8px;
@@ -113,7 +113,7 @@
         .form-group{margin-bottom:20px}
         .form-group label{display:block;margin-bottom:8px;font-weight:500;color:#EAEAEA}
         .form-group label span{color:#FFD60A}
-        .form-group input,.form-group select{width:100%;padding:14px 16px;background:#1A1A24;border:1px solid #2C2C3A;border-radius:8px;color:#EAEAEA;font-size:16px;font-family:'Inter';transition:all 0.3s ease}
+        .form-group input,.form-group select{width:100%;padding:14px 16px;background:#1A24;border:1px solid #2C2C3A;border-radius:8px;color:#EAEAEA;font-size:16px;font-family:'Inter';transition:all 0.3s ease}
         .form-group input:focus,.form-group select:focus{outline:none;border-color:#00D1FF;box-shadow:0 0 0 3px rgba(0,209,255,0.1)}
         .form-group input::placeholder{color:#6B6B7B}
         .checkbox-group{display:flex;gap:12px;align-items:flex-start;background:rgba(255,214,10,0.05);padding:16px;border-radius:8px;margin:24px 0}
@@ -127,8 +127,10 @@
         @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(37,211,102,0.7)}50%{box-shadow:0 0 0 15px rgba(37,211,102,0)}}
         
         footer{background:#0A0A0F;border-top:1px solid rgba(255,214,10,0.1);padding:40px 0;text-align:center}
-        footer p{color:#8A8A9A;font-size:14px;margin:8px 0}
+        footer p{color:#8A9A;font-size:14px;margin:8px 0}
         footer strong{color:#FFD60A}
+        footer a{color:#00D1FF}
+        footer a:hover{color:#FFD60A}
         
         @media(max-width:768px){
             .nav-links{display:none}
@@ -290,7 +292,7 @@
                         <label for="autorizo">Autorizo Sidmarkting® a utilizar estes dados exclusivamente para registro da marca no INPI, conforme LGPD.</label>
                     </div>
                     <button type="submit" class="btn-whatsapp">
-                        <svg width="24" height="24" viewBox="0 0 32 32" fill="white"><path d="M16.003 2.667c-7.363 0-13.336 5.973-13.336 13.336 0 2.35.617 4.64 1.792 6.661L2.667 29.333l6.82-1.758c1.93 1.056 4.12 1.613 6.516 1.613h.005c7.361 0 13.335-5.974 13.335-13.337 0-3.562-1.387-6.912-3.906-9.431-2.519-2.519-5.869-3.906-9.43-3.906zm7.687 19.467c-.322.902-1.888 1.771-2.59 1.885-.682.11-1.532.156-2.472-.156-.571-.19-1.305-.422-2.248-.826-3.954-1.71-6.527-5.907-6.725-6.181-.198-.275-1.605-2.133-1.605-4.07 0-1.937 1.016-2.893 1.377-3.289.361-.396.787-.495 1.05-.495.262 0 .525.002.755.014.242.012.57-.092.893.682.322.774 1.096 2.674 1.193 2.87.096.195.161.423.032.692-.128.27-.193.436-.385.671-.193.235-.405.526-.578.707-.192.192-.392.4-.168.785.224.386.997 1.644 2.14 2.662 1.47 1.31 2.71 1.716 3.095 1.91.386.196.611.163.836-.098.225-.26.964-1.126 1.222-1.513.258-.386.516-.322.871-.193.356.128 2.255 1.064 2.642 1.258.387.194.645.291.741.452.096.16.096.93-.226 1.832z"/></svg>
+                        <svg width="24" height="24" viewBox="0 0 32" fill="white"><path d="M16.003 2.667c-7.363 0-13.336 5.973-13.336 13.336 0 2.35.617 4.64 1.792 6.661L2.667 29.333l6.82-1.758c1.93 1.056 4.12 1.613 6.516 1.613h.005c7.361 0 13.335-5.974 13.335-13.337 0-3.562-1.387-6.912-3.906-9.431-2.519-2.519-5.869-3.906-9.43-3.906zm7.687 19.467c-.322.902-1.888 1.771-2.59 1.885-.682.11-1.532.156-2.472-.156-.571-.19-1.305-.422-2.248-.826-3.954-1.71-6.527-5.907-6.725-6.181-.198-.275-1.605-2.133-1.605-4.07 0-1.937 1.016-2.893 1.377-3.289.361-.396.787-.495 1.05-.495.262 0 .525.002.755.014.242.012.57-.092.893.682.322.774 1.096 2.674 1.193 2.87.096.195.161.423.032.692-.128.27-.193.436-.385.671-.193.235-.405.526-.578.707-.192.192-.392.4-.168.785.224.386.997 1.644 2.14 2.662 1.47 1.31 2.71 1.716 3.095 1.91.386.196.611.163.836-.098.225-.26.964-1.126 1.222-1.513.258-.386.516-.322.871-.193.356.128 2.255 1.064 2.642 1.258.387.194.645.291.741.452.096.16.096.93-.226 1.832z"/></svg>
                         Enviar dados via WhatsApp
                     </button>
                 </form>
@@ -413,7 +415,7 @@
                     <a href="https://wa.me/5521966053200?text=Ol%C3%A1%20Sidmarkting%2C%20quero%20o%20Plano%20Empresa" class="btn" style="width:100%;margin-top:20px;text-align:center">Contratar Empresa</a>
                 </div>
             </div>
-            <p style="text-align:center;margin-top:32px;color:#8A8A9A;font-size:14px">
+            <p style="text-align:center;margin-top:32px;color:#8A9A;font-size:14px">
                 * <strong style="color:#FFD60A">Pagamento único.</strong> Taxas INPI são pagas diretamente ao governo via GRU. Valores de referência 2026.
             </p>
         </div>
@@ -456,4 +458,6 @@
                     <div class="faq-q">
                         <span>Taxas do INPI estão inclusas?</span>
                         <span class="icon">+</span>
-                   
+                    </div>
+                    <div class="faq-a">
+                        <div>Não. As taxas são pagas direto ao governo via GRU (Guia de
