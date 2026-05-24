@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<head>
     <meta charset="UTF-8">
     <meta name="google-site-verification" content="nCNn4BXrF-sSr9AxywvGW0jFxsWosya6OfTHSa9ZVOk" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +8,7 @@
     <meta name="keywords" content="registro de marca, INPI, propriedade industrial, marca registrada, Sidmarkting">
     <meta name="author" content="Sidnei Santos - Sidmarkting">
     <meta name="robots" content="index, follow">
+    
     <!-- Open Graph -->
     <meta property="og:title" content="Sidmarkting® | Registro de Marcas no INPI - Instituição Privada">
     <meta property="og:description" content="Proteja sua marca com registro no INPI. Processo 100% digital, seguro e com acompanhamento jurídico. Instituição privada autorizada.">
@@ -489,7 +489,6 @@
             </div>
         </section>
 
-        <!-- NOVA SEÇÃO: SEGURANÇA E TRANSPARÊNCIA -->
         <section class="security-section" id="seguranca" aria-labelledby="seguranca-title">
             <div class="container">
                 <div class="security-grid">
@@ -643,7 +642,6 @@
         </section>
     </main>
 
-    <!-- Botão flutuante do WhatsApp -->
     <a href="https://wa.me/5521966053200?text=Ol%C3%A1%20Sidmarkting%2C%20preciso%20de%20ajuda%20com%20registro%20de%20marca" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Falar com Sidmarkting no WhatsApp" role="button">
         <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16.003 2.667c-7.363 0-13.336 5.973-13.336 13.336 0 2.35.617 4.64 1.792 6.661L2.667 29.333l6.82-1.758c1.93 1.056 4.12 1.613 6.516 1.613h.005c7.361 0 13.335-5.974 13.335-13.337 0-3.562-1.387-6.912-3.906-9.431-2.519-2.519-5.869-3.906-9.43-3.906zm7.687 19.467c-.322.902-1.888 1.771-2.59 1.885-.682.11-1.532.156-2.472-.156-.571-.19-1.305-.422-2.248-.826-3.954-1.71-6.527-5.907-6.725-6.181-.198-.275-1.605-2.133-1.605-4.07 0-1.937 1.016-2.893 1.377-3.289.361-.396.787-.495 1.05-.495.262 0 .525.002.755.014.242.012.57-.092.893.682.322.774 1.096 2.674 1.193 2.87.096.195.161.423.032.692-.128.27-.193.436-.385.671-.193.235-.405.526-.578.707-.192.192-.392.4-.168.785.224.386.997 1.644 2.14 2.662 1.47 1.31 2.71 1.716 3.095 1.91.386.196.611.163.836-.098.225-.26.964-1.126 1.222-1.513.258-.386.516-.322.871-.193.356.128 2.255 1.064 2.642 1.258.387.194.645.291.741.452.096.16.096.93-.226 1.832z"/></svg>
     </a>
@@ -666,7 +664,6 @@
     </footer>
 
     <script>
-        // ===== MENU MOBILE =====
         const menuToggle = document.querySelector('.menu-toggle');
         const navLinks = document.querySelector('.nav-links');
         menuToggle?.addEventListener('click', () => {
@@ -685,7 +682,6 @@
             });
         });
 
-        // ===== FAQ ACCORDION =====
         document.querySelectorAll('.faq-q').forEach(button => {
             button.addEventListener('click', () => {
                 const item = button.parentElement;
@@ -707,7 +703,6 @@
             });
         });
 
-        // ===== FORMATAÇÃO DE INPUTS =====
         document.getElementById('cpf')?.addEventListener('input', function(e) {
             let value = e.target.value.replace(/\D/g, '');
             value = value.replace(/(\d{3})(\d)/, '$1.$2');
@@ -727,7 +722,6 @@
             e.target.value = value;
         });
 
-        // ===== VALIDAÇÃO DE FORMULÁRIO =====
         const form = document.getElementById('inpiForm');
         const submitBtn = document.getElementById('submitBtn');
         const btnText = document.getElementById('btnText');
@@ -793,7 +787,6 @@
             });
         });
 
-        // ===== ENVIO DO FORMULÁRIO =====
         form?.addEventListener('submit', async function(e) {
             e.preventDefault();
             const fields = [
@@ -867,10 +860,8 @@
             }
         });
 
-        // ===== ANO NO FOOTER =====
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // ===== SCROLL SUAVE =====
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 const href = this.getAttribute('href');
@@ -887,7 +878,6 @@
         });
     </script>
     
-    <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
